@@ -7,12 +7,34 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/locationLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="32dp"
+        android:text="Location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentWeatherLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Weather"
+        app:layout_constraintEnd_toEndOf="@+id/locationLabel"
+        app:layout_constraintStart_toStartOf="@+id/locationLabel"
+        app:layout_constraintTop_toBottomOf="@id/locationLabel" />
+
+    <TextView
+        android:id="@+id/forecastLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="forecast"
+        app:layout_constraintEnd_toEndOf="@+id/currentWeatherLabel"
+        app:layout_constraintStart_toStartOf="@+id/currentWeatherLabel"
+        app:layout_constraintTop_toBottomOf="@+id/currentWeatherLabel" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
