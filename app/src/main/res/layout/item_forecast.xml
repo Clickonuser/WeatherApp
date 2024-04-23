@@ -39,7 +39,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Temp"
-                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/item_recycler_description"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_recycler_date"/>
@@ -57,12 +59,12 @@
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/weather_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_launcher_background"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_marginEnd="8dp"
+                android:src="@drawable/clouds"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,13 +19,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="16dp">
+            android:paddingBottom="24dp">
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/weather_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
-                android:src="@drawable/ic_launcher_background"
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/clouds"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -34,7 +35,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="32"
-                android:textSize="72sp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_blue"
+                android:textSize="51sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weather_image" />
@@ -44,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cloudy"
                 android:textSize="28sp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weather_temp" />
@@ -53,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="broken clouds"
                 android:textSize="16sp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weather_main" />
@@ -63,42 +68,53 @@
         android:id="@+id/weather_container_secondary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/weather_container_main">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp">
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/weather_pressure_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
+
+                app:layout_constraintEnd_toStartOf="@id/weather_humidity_container"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/weather_humidity_container">
+                app:layout_constraintTop_toTopOf="parent">
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_pressure_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:textSize="28sp"
-                    android:text="56" />
+                    android:text="56"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="28sp" />
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/weather_pressure_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/pressure" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_pressure_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Pressure" />
+                    android:text="Pressure"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -106,28 +122,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/weather_wind_speed_container"
                 app:layout_constraintStart_toEndOf="@id/weather_pressure_container"
-                app:layout_constraintEnd_toStartOf="@id/weather_wind_speed_container">
+                app:layout_constraintTop_toTopOf="parent">
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_humidity_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="28sp"
                     android:layout_gravity="center_horizontal"
-                    android:text="56" />
+                    android:text="56"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="28sp" />
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/weather_humidity_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/humidity" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_humidity_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Humidity" />
+                    android:text="Humidity"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
@@ -135,28 +157,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/weather_humidity_container"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_wind_speed_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="28sp"
                     android:layout_gravity="center_horizontal"
-                    android:text="56" />
+                    android:text="56"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="28sp" />
+
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/weather_wind_speed_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_launcher_background" />
+                    android:src="@drawable/wind" />
+
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/weather_wind_speed_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Wind Speed" />
+                    android:text="Wind Speed"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
