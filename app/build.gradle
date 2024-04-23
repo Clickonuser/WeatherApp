@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -54,4 +56,11 @@ dependencies {
     def arch_version = '2.2.0-alpha01'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$arch_version"
+
+    // Dagger-hilt
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-android-compiler:2.44'
+
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
+
 }
