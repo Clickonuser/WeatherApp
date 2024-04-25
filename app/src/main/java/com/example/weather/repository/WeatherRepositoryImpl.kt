@@ -13,7 +13,7 @@ class WeatherRepositoryImpl @Inject constructor(
 
     override suspend fun getCoordinates(city: String): Coord {
         val response = weatherApi.getGeocoding(city, LIMIT, APP_ID)
-        if(response.isSuccessful) {
+        if(response.isSuccessful && !(response.body().isNullOrEmpty())) {
             val locationResult = response.body()
             val lat = locationResult?.first()?.lat
             val lon = locationResult?.first()?.lon
@@ -22,7 +22,6 @@ class WeatherRepositoryImpl @Inject constructor(
             }
         }
         return Coord(0.0, 0.0)
-
     }
 
     override suspend fun getCurrentWeather(lat: Double, lon: Double): CurrentWeatherResult {
@@ -79,5 +78,4 @@ class WeatherRepositoryImpl @Inject constructor(
         const val WEATHER_TYPE_THUNDERSTORM = "Thunderstorm"
         const val WEATHER_TYPE_CLOUDS = "Clouds"
     }
-
 }

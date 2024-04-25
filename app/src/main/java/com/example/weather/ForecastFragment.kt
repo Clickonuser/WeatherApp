@@ -22,6 +22,7 @@ class ForecastFragment : Fragment() {
     private var _binding: FragmentForecastBinding? = null
     private val binding get() = _binding
 
+    private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var adapter: ForecastAdapter
 
     override fun onCreateView(
@@ -36,12 +37,11 @@ class ForecastFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(requireContext())
-        binding?.forecastRecycler?.layoutManager = layoutManager
+        initViews()
 
-        mainViewModel.forecastResult.observe(viewLifecycleOwner, Observer {
+        mainViewModel.forecastResult.observe(viewLifecycleOwner, Observer { itForecast ->
             val forecastResultList = mutableListOf<ForecastResult>()
-            it.list.forEach {
+            itForecast.list.forEach {
                 forecastResultList.add(
                     ForecastResult(
                         main = it.weather.first().main,
@@ -51,10 +51,15 @@ class ForecastFragment : Fragment() {
                     )
                 )
             }
-            adapter = ForecastAdapter(requireContext(), forecastResultList)
-            binding?.forecastRecycler?.adapter = adapter
+            adapter.updateList(forecastResultList)
         })
+    }
 
+    private fun initViews() {
+        layoutManager = LinearLayoutManager(requireContext())
+        binding?.forecastRecycler?.layoutManager = layoutManager
+        adapter = ForecastAdapter(requireContext(), listOf())
+        binding?.forecastRecycler?.adapter = adapter
     }
 
     companion object {

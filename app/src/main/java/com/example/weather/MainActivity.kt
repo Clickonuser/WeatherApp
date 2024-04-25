@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
@@ -33,17 +34,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewPager = binding.viewPager
-        tabLayout = binding.tabLayout
-        mainInputField = binding.mainInputField
+        initViews()
 
         mainInputField.setEndIconOnClickListener {
-            // Hide keyboard
-            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            if (inputMethodManager.isActive) {
-                inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
-            }
-
+            hidingKeyboard()
             lifecycleScope.launch(Dispatchers.Main) {
                 mainViewModel.getCoordinates(mainInputField.editText?.text.toString())
             }
@@ -51,12 +45,29 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.coordinatesResult.observe(this, Observer {
             lifecycleScope.launch(Dispatchers.Main) {
-                mainViewModel.getCurrentWeather(it.lat, it.lon)
-                mainViewModel.getForecast(it.lat, it.lon)
+                if (it.lat == 0.0 && it.lon == 0.0) {
+                    Toast.makeText(this@MainActivity, "Invalid input", Toast.LENGTH_SHORT).show()
+                } else {
+                    mainViewModel.getCurrentWeather(it.lat, it.lon)
+                    mainViewModel.getForecast(it.lat, it.lon)
+                }
             }
         })
 
         prepareViewPager()
+    }
+
+    private fun initViews() {
+        viewPager = binding.viewPager
+        tabLayout = binding.tabLayout
+        mainInputField = binding.mainInputField
+    }
+
+    private fun hidingKeyboard() {
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (inputMethodManager.isActive) {
+            inputMethodManager.hideSoftInputFromWindow(binding.root.windowToken, 0)
+        }
     }
 
     private fun prepareViewPager() {
@@ -64,7 +75,6 @@ class MainActivity : AppCompatActivity() {
             WeatherFragment.newInstance(),
             ForecastFragment.newInstance(),
         )
-
         val tabTitlesArray = arrayOf("Weather", "Forecast")
 
         viewPager.adapter = ViewPagerAdapter(this, fragmentList)
@@ -73,6 +83,5 @@ class MainActivity : AppCompatActivity() {
             tab.text = tabTitlesArray[position]
         }.attach()
     }
-
 }
 

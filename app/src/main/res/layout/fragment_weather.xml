@@ -34,7 +34,7 @@
                 android:id="@+id/weather_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="32"
+                android:text="@string/zero"
                 android:textStyle="bold"
                 android:textColor="@color/dark_blue"
                 android:textSize="51sp"
@@ -45,7 +45,7 @@
                 android:id="@+id/weather_main"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cloudy"
+                android:text="@string/dash"
                 android:textSize="28sp"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -55,9 +55,8 @@
                 android:id="@+id/weather_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="broken clouds"
+                android:text="@string/dash"
                 android:textSize="16sp"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/weather_main" />
@@ -96,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="56"
+                    android:text="@string/zero"
                     android:textColor="@color/dark_blue"
                     android:textSize="28sp" />
 
@@ -112,7 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Pressure"
+                    android:text="@string/pressure"
                     android:textSize="16sp"
                     android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -131,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="56"
+                    android:text="@string/zero"
                     android:textColor="@color/dark_blue"
                     android:textSize="28sp" />
 
@@ -147,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Humidity"
+                    android:text="@string/humidity"
                     android:textSize="16sp"
                     android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -166,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="56"
+                    android:text="@string/zero"
                     android:textColor="@color/dark_blue"
                     android:textSize="28sp" />
 
@@ -182,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="Wind Speed"
+                    android:text="@string/wind_speed"
                     android:textSize="16sp"
                     android:textColor="@color/black" />
             </androidx.appcompat.widget.LinearLayoutCompat>
