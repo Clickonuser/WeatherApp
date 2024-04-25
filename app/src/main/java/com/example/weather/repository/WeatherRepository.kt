@@ -1,7 +1,7 @@
 package com.example.weather.repository
 
+import com.example.weather.model.Coord
 import com.example.weather.model.currentweather.CurrentWeatherResult
-import com.example.weather.model.forecast.Coord
 import com.example.weather.model.forecast.Forecast
 
 /**

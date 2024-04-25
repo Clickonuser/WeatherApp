@@ -1,4 +1,4 @@
-package com.example.weather.model.currentweather
+package com.example.weather.model
 
 data class Coord(
     val lat: Double,

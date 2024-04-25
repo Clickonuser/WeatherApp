@@ -1,6 +1,6 @@
 package com.example.weather.model.currentweather
 
-data class Sys(
+data class SysWeather(
     val country: String,
     val id: Int,
     val sunrise: Int,

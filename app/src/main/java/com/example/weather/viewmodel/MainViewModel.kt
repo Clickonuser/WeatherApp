@@ -3,8 +3,8 @@ package com.example.weather.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.weather.model.Coord
 import com.example.weather.model.currentweather.CurrentWeatherResult
-import com.example.weather.model.forecast.Coord
 import com.example.weather.model.forecast.Forecast
 import com.example.weather.repository.WeatherRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -28,8 +28,8 @@ class MainViewModel @Inject constructor(
 
     suspend fun getCoordinates(city: String) {
         withContext(Dispatchers.IO) {
-            val coordinatesApiResult = weatherRepository.getCoordinates(city)
-            coordinates.postValue(coordinatesApiResult)
+            val coordinatesResult = weatherRepository.getCoordinates(city)
+            coordinates.postValue(coordinatesResult)
         }
     }
 

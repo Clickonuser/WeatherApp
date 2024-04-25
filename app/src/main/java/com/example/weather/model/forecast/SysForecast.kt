@@ -1,5 +1,5 @@
 package com.example.weather.model.forecast
 
-data class Sys(
+data class SysForecast(
     val pod: String
 )
